@@ -2,10 +2,13 @@
 import { AppState } from './AppState.js';
 import { computed } from 'vue'
 
-const upgrades = AppState.upgrades 
+const upgrades = AppState.upgrades
 
 function increaseUpgrades() {
-  console.log('clicked upgrade');
+  upgradeService.increaseUpgrades(upgrades)
+}
+function mineKitten() {
+  console.log('Clicked kitten')
 }
 
 
@@ -26,7 +29,7 @@ function increaseUpgrades() {
     <main>
       <section class="row">
         <div class="col-md-12 d-flex justify-content-center m-3">
-          <img src="https://orig14.deviantart.net/c5f5/f/2016/355/3/f/__gif_oh_christmas_cat_oh_christmas_cat____by_littlepidgie-dasenyx.gif" alt="It's a cat">
+          <img @click="mineKitten" src="https://orig14.deviantart.net/c5f5/f/2016/355/3/f/__gif_oh_christmas_cat_oh_christmas_cat____by_littlepidgie-dasenyx.gif" alt="It's a cat">
         </div>
       </section>
     </main>

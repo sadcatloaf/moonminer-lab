@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { Upgrades } from './models/Upgrades.js'
+import { Kittens } from './models/Kittens.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -9,18 +9,21 @@ export const AppState = reactive({
   account: null,
 
 upgrades: [
-  new Upgrades({
+  new Kittens({
     name: 'Yarn Ball'
   }),
-  new Upgrades({
+  new Kittens({
     name: 'Temptations'
   }),
-  new Upgrades({
+  new Kittens({
     name: 'Laser Pointer'
   }),
-  new Upgrades({
+  new Kittens({
     name: 'Christmas Tree'
   })
 ]
+
+
+
 })
 
