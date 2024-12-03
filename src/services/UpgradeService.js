@@ -1,5 +1,8 @@
 class UpgradeService {
-    increaseUpgrades(upgrades) {
+    increaseClickUpgrades(upgrades) {
+        upgrades.cat++
+    }
+    increaseTimeUpgrades(upgrades) {
         upgrades.cat++
     }
 }

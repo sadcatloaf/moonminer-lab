@@ -3,11 +3,14 @@ import { AppState } from './AppState.js';
 import { computed, ref } from 'vue'
 import { upgradeService } from './services/UpgradeService.js';
 
-const upgrades = computed(()=> AppState.upgrades)
+const upgrades = computed(()=> AppState.clickUpgrades)
 const kittens = ref(0)
 
-function increaseUpgrades(upgrades) {
-  upgradeService.increaseUpgrades(upgrades)
+function increaseClickUpgrades(upgrades) {
+  upgradeService.increaseClickUpgrades(upgrades)
+}
+function increaseTimeUpgrades(upgrades) {
+  upgradeService.increaseTimeUpgrades(upgrades)
 }
 function mineKitten() {
   kittens.value++
@@ -25,7 +28,7 @@ function mineKitten() {
 <template>
   <body class="container-fluid">
     <header>
-      <div class="text-center m-3">
+      <div class="text-center m-3 text-light">
         <h1>KittenMiner V2</h1>
       </div>
     </header>
@@ -41,12 +44,15 @@ function mineKitten() {
         <span >{{ kittens }}</span>
       </div>
       <section v-for="upgrade in upgrades" :key="upgrade.upgrade" class="row text-light text-center justify-content-evenly m-3 p-2">
-        <div class="col-md-5 d-flex text-right">
+        <div class="col-md-5 d-flex">
           <div class="col-4">
-            <button @click="increaseUpgrades" class="m-2 btn btn-success">{{ upgrade.upgrade }}</button>
+            <button @click="increaseClickUpgrades(upgrade)" class="m-2 btn btn-success">{{ upgrade.upgrade }}</button>
             <span>{{ upgrade.cat }}</span>
           </div>
-        
+          <div class="col-4">
+            <button @click="increaseTimeUpgrades(upgrade)" class="m-2 btn btn-success">{{ upgrade.upgrade }}</button>
+            <span>{{ upgrade.cat }}</span>
+          </div>
         </div>
         
       </section>

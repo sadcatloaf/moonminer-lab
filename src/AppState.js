@@ -8,21 +8,32 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} user info from the database*/
   account: null,
 
-upgrades: [
+clickUpgrades: [
   new Kittens({
-    name: 'Yarn Ball'
+    name: 'Yarn Ball',
+    price: 25,
+    quantity: 0,
+    multiplier: 10
   }),
   new Kittens({
-    name: 'Temptations'
+    name: 'Temptations',
+    price: 35,
+    multiplier: 20
+  }),
+],
+
+timeUpgrades: [
+  new Kittens({
+    name: 'Laser Pointer',
+    price: 100,
+    multiplier: 35
   }),
   new Kittens({
-    name: 'Laser Pointer'
-  }),
-  new Kittens({
-    name: 'Christmas Tree'
+    name: 'Christmas Tree',
+    price: 5000,
+    multiplier: 100
   })
 ]
-
 
 
 })
