@@ -1,6 +1,6 @@
 class UpgradeService {
-    increase(upgrade) {
-        upgrade.score++
+    increaseUpgrades(upgrades) {
+        upgrades.cat++
     }
 }
 export const upgradeService = new UpgradeService

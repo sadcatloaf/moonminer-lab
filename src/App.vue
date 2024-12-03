@@ -1,14 +1,17 @@
 <script setup>
 import { AppState } from './AppState.js';
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { upgradeService } from './services/UpgradeService.js';
 
-const upgrades = AppState.upgrades
+const upgrades = computed(()=> AppState.upgrades)
+const kittens = ref(0)
 
-function increaseUpgrades() {
+function increaseUpgrades(upgrades) {
   upgradeService.increaseUpgrades(upgrades)
 }
 function mineKitten() {
-  console.log('Clicked kitten')
+  kittens.value++
+  console.log(kittens.value)
 }
 
 
@@ -29,35 +32,23 @@ function mineKitten() {
     <main>
       <section class="row">
         <div class="col-md-12 d-flex justify-content-center m-3">
-          <img @click="mineKitten" src="https://orig14.deviantart.net/c5f5/f/2016/355/3/f/__gif_oh_christmas_cat_oh_christmas_cat____by_littlepidgie-dasenyx.gif" alt="It's a cat">
+          <img @click="mineKitten()" src="https://orig14.deviantart.net/c5f5/f/2016/355/3/f/__gif_oh_christmas_cat_oh_christmas_cat____by_littlepidgie-dasenyx.gif" alt="It's a cat">
         </div>
       </section>
     </main>
     <footer>
-      <section class="row text-light text-center justify-content-evenly m-3 p-2">
+      <div class="text-center text-light fs-2">
+        <span >{{ kittens }}</span>
+      </div>
+      <section v-for="upgrade in upgrades" :key="upgrade.upgrade" class="row text-light text-center justify-content-evenly m-3 p-2">
         <div class="col-md-5 d-flex text-right">
           <div class="col-4">
-            <button @click="increaseUpgrades" class="m-2 btn btn-success">Yarn Ball</button>
-            <span>0</span>
+            <button @click="increaseUpgrades" class="m-2 btn btn-success">{{ upgrade.upgrade }}</button>
+            <span>{{ upgrade.cat }}</span>
           </div>
-          <div class="col-4">
-            <button @click="increaseUpgrades" class="m-2 btn btn-success">Temptations</button>
-            <span>0</span>
-          </div>
+        
         </div>
-        <div class="col-md-2">
-          <span>0</span>
-        </div>
-        <div class="col-md-5 d-flex text-right">
-          <div class="col-4">
-            <button @click="increaseUpgrades" class="m-2 btn btn-success">Laser Pointer</button>
-            <span>0</span>
-          </div>
-          <div class="col-4 ">
-            <button @click="increaseUpgrades" class="m-2 btn btn-success">Christmas Tree</button>
-            <span>0</span>
-          </div>
-        </div>
+        
       </section>
     </footer>
   </body>
