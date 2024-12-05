@@ -1,9 +1,18 @@
+import { AppState } from "@/AppState.js"
+import { Kittens } from "@/models/Kittens.js"
+
 class UpgradeService {
-    increaseClickUpgrades(upgrades) {
-        upgrades.cat++
+    mineKitten(clickPower) {
+        AppState.kittens += clickPower
     }
-    increaseTimeUpgrades(upgrades) {
-        upgrades.cat++
+    /**
+     * @param {Kittens} upgrade
+     */
+    increaseUpgrade(upgrade) {
+        upgrade.quantity++
+        AppState.kittens -= upgrade.price
+        upgrade.price += 2
     }
+
 }
 export const upgradeService = new UpgradeService

@@ -7,12 +7,11 @@ export const AppState = reactive({
   identity: null,
   /** @type {import('./models/Account.js').Account} user info from the database*/
   account: null,
-
+kittens: 0,
 clickUpgrades: [
   new Kittens({
     name: 'Yarn Ball',
     price: 25,
-    quantity: 0,
     multiplier: 10
   }),
   new Kittens({
